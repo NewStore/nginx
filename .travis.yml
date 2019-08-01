@@ -7,6 +7,9 @@ install:
 - docker build -t nginx .
 
 script:
-- docker run -d -p 8080:8080 -p 8081:8081 -v $(pwd)/test:/mnt/test nginx nginx -c /mnt/test/nginx.conf
-- curl -f --retry 10 --retry-delay 3 localhost:8080/healthcheck
-- curl -f --retry 10 --retry-delay 3 localhost:8081/healthcheck
+- docker run --name nginx -d -p 127.0.0.1:8080:8080 -p 127.0.0.1:8081:8081 -v $(pwd)/test:/mnt/test nginx nginx -c /mnt/test/nginx.conf
+- docker ps -a
+- docker logs nginx
+- timeout 22 sh -c 'until curl $0:$1; do sleep 3; done' 127.0.0.1 8080
+- curl -f --retry 10 --retry-delay 3 127.0.0.1:8080/healthcheck
+- curl -f --retry 10 --retry-delay 3 127.0.0.1:8081/healthcheck

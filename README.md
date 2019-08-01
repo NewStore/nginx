@@ -1,4 +1,4 @@
-# nginx
+# nginx [![Build Status](https://travis-ci.org/NewStore/nginx.svg?branch=master)](https://travis-ci.org/NewStore/nginx)
 Nginx with lua, opentracing, jaeger and lightstep
 
 
