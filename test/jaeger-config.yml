@@ -1,0 +1,8 @@
+service_name: nginx
+disabled: false
+reporter:
+    logSpans: true
+    localAgentHostPort: www.mocky.io:8080
+sampler:
+  type: const
+  param: 1

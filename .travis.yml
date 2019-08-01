@@ -1,0 +1,12 @@
+language: minimal
+
+services:
+  - docker
+
+install:
+- docker build -t nginx .
+
+script:
+- docker run -d -p 8080:8080 -p 8081:8081 -v $(pwd)/test:/mnt/test nginx nginx -c /mnt/test/nginx.conf
+- curl -f --retry 10 --retry-delay 3 localhost:8080/healthcheck
+- curl -f --retry 10 --retry-delay 3 localhost:8081/healthcheck

@@ -1,0 +1,7 @@
+{
+    "access_token": "some-access-token",
+    "component_name": "nginx",
+    "collector_host": "www.mocky.io",
+    "collector_port": 80,
+    "collector_plaintext": false
+}

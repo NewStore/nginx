@@ -71,6 +71,12 @@ RUN apt-get update && \
     --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie' && \
     make && \
     make install && \
+    # create temp folders
+    mkdir -p /var/cache/nginx/client_temp && \
+    mkdir -p /var/cache/nginx/proxy_temp && \
+    mkdir -p /var/cache/nginx/fastcgi_temp && \
+    mkdir -p /var/cache/nginx/uwsgi_temp && \
+    mkdir -p /var/cache/nginx/scgi_temp && \
     # Adding open tracing modules
     mkdir /usr/lib/nginx && \
     mkdir /usr/lib/nginx/modules && \
